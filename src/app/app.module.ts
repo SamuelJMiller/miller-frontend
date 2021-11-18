@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatlistComponent } from './chatlist/chatlist.component';
 import { ChatmessageComponent } from './chatmessage/chatmessage.component';
+import { NewchatComponent } from './newchat/newchat.component';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
       ChatlistComponent,
-      ChatmessageComponent
+      ChatmessageComponent,
+      NewchatComponent
    ],
   imports: [
     BrowserModule,
