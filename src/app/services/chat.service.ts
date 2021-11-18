@@ -20,4 +20,8 @@ export class ChatService {
     return this.http.get<ChatMessage[]>(`${this.baseurl}/channel/${channel}`);
   }
 
+  public newMessage(channel: string, message: ChatMessage): Observable<ChatMessage> {
+    return this.http.post<ChatMessage>(`${this.baseurl}/channel/${channel}`, message);
+  }
+
 }

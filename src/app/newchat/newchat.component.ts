@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatMessage } from '../models/chat';
+import { ChatService } from '../services/chat.service';
 
 @Component({
   selector: 'app-newchat',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewchatComponent implements OnInit {
 
-  constructor() { }
+  newmessage: ChatMessage = {
+    username: "",
+    message: ""
+  };
+
+  constructor(public chat: ChatService) { }
 
   ngOnInit() {
   }
