@@ -27,4 +27,12 @@ export class ChatService {
     return this.http.post<ChatMessage>(`${this.baseurl}/channel/${channel}`, message);
   }
 
+  public updateChannel(channel: string, content: ChatMessage[]): Observable<ChatMessage[]> {
+    return this.http.put<ChatMessage[]>(`${this.baseurl}/channel/${channel}`, content);
+  }
+
+  public deleteChannel(channel: string): Observable<unknown> {
+    return this.http.delete(`${this.baseurl}/channel/${channel}`);
+  }
+
 }
