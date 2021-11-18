@@ -8,10 +8,15 @@ import { ChatService } from '../services/chat.service';
   styleUrls: ['./chatlist.component.scss']
 })
 export class ChatlistComponent implements OnInit {
+  messages: ChatMessage[] = [];
 
   constructor(public chat: ChatService) { }
 
   ngOnInit() {
+    this.chat.getMessagesFromChannel('smiller').subscribe((data) => {
+      console.log('Channels received:', data);
+      this.messages = data;
+    });
   }
 
 }

@@ -12,12 +12,12 @@ export class ChatService {
 
   constructor(private http: HttpClient) { }
 
-  public getChannels(): Observable<any> {
-    return this.http.get(`${this.baseurl}/channel`);
+  public getChannels(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseurl}/channel`);
   }
 
-  public getMessagesFromChannel(channel: string): Observable<any> {
-    return this.http.get(`${this.baseurl}/channel/${channel}`);
+  public getMessagesFromChannel(channel: string): Observable<ChatMessage[]> {
+    return this.http.get<ChatMessage[]>(`${this.baseurl}/channel/${channel}`);
   }
 
 }
