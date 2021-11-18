@@ -1,3 +1,3 @@
-<input type="text" id="chatbox">
+<input type="text" id="chatbox" [(ngModel)]="inputValue">
 
-<button>Send</button>
+<button (click)="sendMessage()">Send</button>

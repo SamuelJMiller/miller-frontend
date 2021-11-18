@@ -9,14 +9,20 @@ import { ChatService } from '../services/chat.service';
 })
 export class NewchatComponent implements OnInit {
 
-  newmessage: ChatMessage = {
+  newMessage: ChatMessage = {
     username: "",
     message: ""
   };
 
+  inputValue: string = "";
+
   constructor(public chat: ChatService) { }
 
   ngOnInit() {
+  }
+
+  sendMessage() {
+    console.log(this.inputValue);
   }
 
 }
