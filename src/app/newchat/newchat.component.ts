@@ -10,7 +10,7 @@ import { ChatService } from '../services/chat.service';
 export class NewchatComponent implements OnInit {
 
   newMessage: ChatMessage = {
-    username: "",
+    username: "smiller",
     message: ""
   };
 
@@ -22,7 +22,13 @@ export class NewchatComponent implements OnInit {
   }
 
   sendMessage() {
-    console.log(this.inputValue);
+    if (this.inputValue.length > 0) {
+      this.newMessage.message = this.inputValue;
+      
+      this.chat.sendNewMessage('smiller', this.newMessage).subscribe((data) => {
+        this.chat.messages.push(data);
+      });
+    }
   }
 
 }

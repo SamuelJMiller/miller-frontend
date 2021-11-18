@@ -8,6 +8,9 @@ import { ChatMessage } from '../models/chat';
 })
 export class ChatService {
 
+  // Message need to be accessed by both chatlist and newchat
+  public messages: ChatMessage[] = [];
+
   private baseurl = "http://73.19.65.35:3500/api";
 
   constructor(private http: HttpClient) { }
@@ -20,7 +23,7 @@ export class ChatService {
     return this.http.get<ChatMessage[]>(`${this.baseurl}/channel/${channel}`);
   }
 
-  public newMessage(channel: string, message: ChatMessage): Observable<ChatMessage> {
+  public sendNewMessage(channel: string, message: ChatMessage): Observable<ChatMessage> {
     return this.http.post<ChatMessage>(`${this.baseurl}/channel/${channel}`, message);
   }
 
