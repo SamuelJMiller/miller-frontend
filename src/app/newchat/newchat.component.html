@@ -1,3 +1,7 @@
-<input type="text" id="chatbox" [(ngModel)]="inputValue">
-
-<button (click)="sendMessage()">Send</button>
+<form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
+    <label>Username:</label><br>
+    <input type="text" formControlName="username" placeholder="required"><br>
+    <label>Message:</label><br>
+    <input type="text" formControlName="message" placeholder="required"><br>
+    <input type="submit" value="Send message" [disabled]="!chatForm.valid">
+</form>

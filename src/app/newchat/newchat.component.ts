@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatMessage } from '../models/chat';
 import { ChatService } from '../services/chat.service';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-newchat',
@@ -14,21 +15,29 @@ export class NewchatComponent implements OnInit {
     message: ""
   };
 
-  inputValue: string = "";
+  chatForm: FormGroup = new FormGroup({});
 
-  constructor(public chat: ChatService) { }
+  constructor(public chat: ChatService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.initializeForm();
   }
 
-  sendMessage() {
-    if (this.inputValue.length > 0) {
-      this.newMessage.message = this.inputValue;
-      
-      this.chat.sendNewMessage('smiller', this.newMessage).subscribe((data) => {
-        this.chat.messages.push(data);
-      });
-    }
+  initializeForm(): void {
+    this.chatForm = this.fb.group({
+      username: ['', Validators.required],
+      message: ['', Validators.required]
+    });
+  }
+
+  onSubmit(): void {
+    this.newMessage.message = this.chatForm.controls['message'].value;
+
+    this.chat.sendNewMessage('smiller', this.newMessage).subscribe(data => {
+      this.chat.messages.push(data);
+    });
+
+    this.initializeForm();
   }
 
 }
