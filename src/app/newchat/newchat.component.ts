@@ -33,7 +33,7 @@ export class NewchatComponent implements OnInit {
   onSubmit(): void {
     this.newMessage.message = this.chatForm.controls['message'].value;
 
-    this.chat.sendNewMessage('smiller', this.newMessage).subscribe(data => {
+    this.chat.sendNewMessage(this.newMessage.username, this.newMessage).subscribe(data => {
       this.chat.messages.push(data);
     });
 
